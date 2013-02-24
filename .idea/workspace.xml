@@ -8,9 +8,9 @@
     <ignored path="j-tree.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/JTreeMapStripped.java" changelist="1f8b94a0-0759-41e8-a006-9088f0bcac61" time="1361487768760" ignored="false" />
-    <file path="/TestMap.java" changelist="1f8b94a0-0759-41e8-a006-9088f0bcac61" time="1361657432386" ignored="false" />
-    <file path="/fragment.java" changelist="1f8b94a0-0759-41e8-a006-9088f0bcac61" time="1361659957595" ignored="false" />
-    <file path="/JTreeMap.java" changelist="1f8b94a0-0759-41e8-a006-9088f0bcac61" time="1361658445746" ignored="false" />
+    <file path="/TestMap.java" changelist="1f8b94a0-0759-41e8-a006-9088f0bcac61" time="1361739615887" ignored="false" />
+    <file path="/fragment.java" changelist="1f8b94a0-0759-41e8-a006-9088f0bcac61" time="1361738993126" ignored="false" />
+    <file path="/JTreeMap.java" changelist="1f8b94a0-0759-41e8-a006-9088f0bcac61" time="1361739844793" ignored="false" />
     <file path="/DirectoryNotFoundException.java" changelist="1f8b94a0-0759-41e8-a006-9088f0bcac61" time="1361489121841" ignored="false" />
     <file path="/JTreeMapString.java" changelist="1f8b94a0-0759-41e8-a006-9088f0bcac61" time="1361659032298" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -68,7 +68,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/org/org/jtree/test/TestMap.java" line="183" class="org.org.jtree.test.TestMap" package="org.org.jtree.test">
+      <breakpoint url="file://$PROJECT_DIR$/main/java/org/jtree/test/TestMap.java" line="183" class="org.jtree.test.TestMap" package="org.jtree.test">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -82,7 +82,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/main/java/org/jtree/core/JTreeMap.java" line="561" class="org.jtree.core.JTreeMap" package="org.jtree.core">
+      <breakpoint url="file://$PROJECT_DIR$/main/java/org/jtree/core/JTreeMap.java" line="181" class="org.jtree.core.JTreeMap" package="org.jtree.core">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -106,20 +106,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="JTreeMap.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="JTreeMap.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/java/org/jtree/core/JTreeMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="220" column="4" selection-start="7100" selection-end="7100" vertical-scroll-proportion="-20.48">
+            <state line="181" column="0" selection-start="6145" selection-end="6145" vertical-scroll-proportion="0.33199194">
               <folding>
-                <element signature="e#0#24183#0" expanded="true" />
+                <element signature="e#0#25598#0" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#3446#3456#0" expanded="true" />
-                <element signature="e#3523#3544#0" expanded="true" />
-                <element signature="e#5893#5903#0" expanded="true" />
-                <element signature="e#15801#15809#0" expanded="true" />
-                <element signature="e#17149#17170#0" expanded="true" />
-                <element signature="e#17779#17789#0" expanded="true" />
-                <element signature="e#20060#20068#0" expanded="true" />
+                <element signature="e#3452#3462#0" expanded="true" />
+                <element signature="e#3535#3556#0" expanded="true" />
+                <element signature="e#6130#6140#0" expanded="true" />
+                <element signature="e#16742#16750#0" expanded="true" />
+                <element signature="e#18302#18323#0" expanded="true" />
+                <element signature="e#18962#18972#0" expanded="true" />
+                <element signature="e#21287#21295#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,12 +163,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestMap.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/java/org/org/jtree/test/TestMap.java">
+      <file leaf-file-name="TestMap.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/org/jtree/test/TestMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="188" column="19" selection-start="8391" selection-end="8391" vertical-scroll-proportion="0.33333334">
+            <state line="229" column="55" selection-start="10354" selection-end="10361" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#3550#3565#0" expanded="true" />
+                <element signature="e#3546#3561#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -193,6 +193,8 @@
         <option value="$PROJECT_DIR$/main/java/org/jtree/core/map/JTreeMap.java" />
         <option value="$PROJECT_DIR$/main/java/org/jtree/core/map/JTreeMapString.java" />
         <option value="$PROJECT_DIR$/main/java/org/jtree/core/JTreeMapString.java" />
+        <option value="$PROJECT_DIR$/main/java/org/jtree/test/TestMap.java" />
+        <option value="$PROJECT_DIR$/main/java/org/jtree/core/JTreeMap.java" />
       </list>
     </option>
   </component>
@@ -288,31 +290,35 @@
               <option name="myItemId" value="org" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="j-tree" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jtree" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="j-tree" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="org" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="TestMap" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ClassTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -330,6 +336,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jtree" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -356,6 +366,9 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.jtree.core.map" />
     </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="org.jtree.test" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.jtree.core.map" />
     </key>
@@ -365,7 +378,7 @@
   </component>
   <component name="RunManager" selected="Application.TestMap">
     <configuration default="false" name="TestMap" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="org.org.jtree.test.TestMap" />
+      <option name="MAIN_CLASS_NAME" value="org.jtree.test.TestMap" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -536,14 +549,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="130" y="-9" width="1799" height="1098" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3993576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3993576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -552,8 +565,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24956772" sideWeight="0.6702356" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32976446" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24956772" sideWeight="0.6006424" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24956772" sideWeight="0.6006424" order="2" side_tool="false" content_ui="combo" />
@@ -624,15 +637,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="684" column="32" selection-start="20030" selection-end="20030" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#24183#0" expanded="true" />
+            <element signature="e#0#25598#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#3446#3456#0" expanded="true" />
-            <element signature="e#3523#3544#0" expanded="true" />
-            <element signature="e#5893#5903#0" expanded="true" />
-            <element signature="e#15801#15809#0" expanded="true" />
-            <element signature="e#17149#17170#0" expanded="true" />
-            <element signature="e#17779#17789#0" expanded="true" />
-            <element signature="e#20060#20068#0" expanded="true" />
+            <element signature="e#3452#3462#0" expanded="true" />
+            <element signature="e#3535#3556#0" expanded="true" />
+            <element signature="e#6130#6140#0" expanded="true" />
+            <element signature="e#16742#16750#0" expanded="true" />
+            <element signature="e#18302#18323#0" expanded="true" />
+            <element signature="e#18962#18972#0" expanded="true" />
+            <element signature="e#21287#21295#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -658,11 +671,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/org/org/jtree/test/TestMap.java">
+    <entry file="file://$PROJECT_DIR$/main/java/org/jtree/test/TestMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="54" selection-start="996" selection-end="996" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#3550#3565#0" expanded="true" />
+            <element signature="e#3546#3561#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -725,23 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/org/jtree/core/JTreeMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="220" column="4" selection-start="7100" selection-end="7100" vertical-scroll-proportion="-20.48">
-          <folding>
-            <element signature="e#0#24183#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#3446#3456#0" expanded="true" />
-            <element signature="e#3523#3544#0" expanded="true" />
-            <element signature="e#5893#5903#0" expanded="true" />
-            <element signature="e#15801#15809#0" expanded="true" />
-            <element signature="e#17149#17170#0" expanded="true" />
-            <element signature="e#17779#17789#0" expanded="true" />
-            <element signature="e#20060#20068#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/java/org/jtree/core/JTreeMapString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="68" column="37" selection-start="2459" selection-end="2459" vertical-scroll-proportion="0.0">
@@ -751,11 +747,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/org/org/jtree/test/TestMap.java">
+    <entry file="file://$PROJECT_DIR$/main/java/org/jtree/test/TestMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="188" column="19" selection-start="8391" selection-end="8391" vertical-scroll-proportion="0.33333334">
+        <state line="229" column="55" selection-start="10354" selection-end="10361" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#3550#3565#0" expanded="true" />
+            <element signature="e#3546#3561#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/org/jtree/core/JTreeMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="181" column="0" selection-start="6145" selection-end="6145" vertical-scroll-proportion="0.33199194">
+          <folding>
+            <element signature="e#0#25598#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3452#3462#0" expanded="true" />
+            <element signature="e#3535#3556#0" expanded="true" />
+            <element signature="e#6130#6140#0" expanded="true" />
+            <element signature="e#16742#16750#0" expanded="true" />
+            <element signature="e#18302#18323#0" expanded="true" />
+            <element signature="e#18962#18972#0" expanded="true" />
+            <element signature="e#21287#21295#0" expanded="true" />
           </folding>
         </state>
       </provider>

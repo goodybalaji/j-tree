@@ -81,8 +81,8 @@ import org.apache.commons.logging.LogFactory;
 public class JTreeMap <T> {
 	private static final Log logger = LogFactory.getLog(JTreeMap.class);
 
-	private HashMap <String,T>            map      = new HashMap <String,T> ();
-	private HashMap <String,List<String>> list     = new HashMap <String,List<String>> ();
+	private HashMap <String,T>            valuesMap      = new HashMap <String,T> ();
+	private HashMap <String,List<String>> directoriesMap = new HashMap <String,List<String>> ();
 
 	private boolean force         = false;
 	private String  delimiter     = null;
@@ -116,7 +116,7 @@ public class JTreeMap <T> {
 		}
 		this.delimiter = delimiter;
 		this.pointer   = delimiter;
-		list.put(this.delimiter, new ArrayList<String>());
+		directoriesMap.put(this.delimiter, new ArrayList<String>());
 
 		fieldPattern   = Pattern.compile(delimiter);
 		listPattern    = Pattern.compile(delimiter + "[^" + delimiter + "]+$");
@@ -156,7 +156,7 @@ public class JTreeMap <T> {
 		if (!isValueKey(key)) {               
 			throw new KeyNotFoundException("Key not found: " + key);
 		}
-		return this.map.get(key);
+		return this.valuesMap.get(key);
 	}
 
 
@@ -169,19 +169,25 @@ public class JTreeMap <T> {
 	/**
 	 * Gets a whole hash under the key if its of leave type
 	 * @param key defines the name where to get the list to access the JTreeMap values
-	 * @param map defines leaf keys and values
+	 * @param valuesMap defines leaf keys and values
 	 */
-	public HashMap <String,T>         readMap (String key) throws DirectoryNotFoundException, DirectoryNotEmptyException {
-		HashMap <String,T> result= new HashMap<String,T>();
+	public HashMap <String,T>         readMap (String key,boolean absoluteFlag) throws DirectoryNotFoundException, DirectoryNotEmptyException {
 		if (!isListKey(key)) {
 			throw new DirectoryNotFoundException("Could not find " + key);
 		}
 		logger.debug("Test" + key);
-		List <String> listKeys = this.ls(key);
+		List <String> listKeys = this.directoriesMap.get(key);
+		HashMap <String,T> result= new HashMap<String,T>();
+
 		for (String setKey:listKeys) {
 			String mapperKey = key + ":" + setKey;
 			if (this.isValueKey(mapperKey)) {
-				result.put(mapperKey, map.get(mapperKey));
+				if (absoluteFlag) {
+					result.put(mapperKey, valuesMap.get(mapperKey));
+				}
+				else {
+					result.put(setKey, valuesMap.get(mapperKey));
+				}
 			}
 		}
     	return result;
@@ -189,13 +195,14 @@ public class JTreeMap <T> {
 
 	@Deprecated
 	public HashMap <String,T>         getHashMap(String key) {
-		try {return this.readMap(key);} catch (Exception e) {logger.error(e);}
+		try {return this.readMap(key,true);} catch (Exception e) {logger.error(e);}
 		return null;
 	}
 
 	@Deprecated
+	// Returns only the relative path
 	public HashMap <String,T>         getHashMapFlat(String key) {
-		try {return this.readMap(key);} catch (Exception e) {logger.error(e);}
+		try {return this.readMap(key,false);} catch (Exception e) {logger.error(e);}
 		return null;
 	}
 
@@ -237,8 +244,10 @@ public class JTreeMap <T> {
 		}
 
 		String completeKey=directory + this.delimiter + key;
-		this.list.get(directory).add(key);
-		map.put(completeKey, value);
+		if (!this.directoriesMap.get(directory).contains(key)) {
+			this.directoriesMap.get(directory).add(key);
+		}
+		valuesMap.put(completeKey, value);
 	}
 
 
@@ -275,7 +284,7 @@ public class JTreeMap <T> {
 	 */
 
 	public void insert(String directory,List <T> entryList) throws DirectoryNotEmptyException, DirectoryNotFoundException {
-		List <String> entries = this.list.get( directory);
+		List <String> entries = this.directoriesMap.get( directory);
 		int entryNum=0;
 		if (entries!=null) {
 			//List <String> entries = new List <String>();
@@ -397,8 +406,8 @@ public class JTreeMap <T> {
 		}
 		logger.debug("add " + directory + " directory: " + parentList + " " + childKey);
 
-		this.list.put(directory, new ArrayList<String>());
-		this.list.get(parentList).add(childKey);
+		this.directoriesMap.put(directory, new ArrayList<String>());
+		this.directoriesMap.get(parentList).add(childKey);
 	}
 
 	/**
@@ -429,8 +438,8 @@ public class JTreeMap <T> {
 				continue;
 			}
 			logger.debug("add " + pathStep + "directory: " + previousDir + " " + path);
-			this.list.put(pathStep, new ArrayList<String>());
-			this.list.get(previousDir).add(path);
+			this.directoriesMap.put(pathStep, new ArrayList<String>());
+			this.directoriesMap.get(previousDir).add(path);
 			previousDir=pathStep;
 		}
 	}
@@ -458,12 +467,15 @@ public class JTreeMap <T> {
 	}
 	@Deprecated
 	public void setPointer (String pointer) {
-;
+		logger.info("Pointer before " + this.pointer + " " + pointer);
 		try {cd(this.getDirectoryCompatibility(pointer));} catch (Exception e) {logger.error(e);}
+		logger.info("Pointer afterwards " + this.pointer + " " + pointer);
 	}
 	@Deprecated
 	public void addPointer (String pointer) {
-		try {cd(this.pointer + this.delimiter + this.pointer);} catch (Exception e) {logger.error(e);}
+		logger.info("Pointer before " + this.pointer + " " + pointer);
+		try {cd(this.pointer + this.delimiter + pointer);} catch (Exception e) {logger.error(e);}
+		logger.info("Pointer afterwards " + this.pointer + " " + pointer);
 	}
 
 	/**
@@ -495,36 +507,54 @@ public class JTreeMap <T> {
 		 * @return
 		 */
 	public List <String> ls(String directory) throws DirectoryNotFoundException, DirectoryNotEmptyException {
-		if (directory==null) {
-			throw new DirectoryNotFoundException("directory is null");
-		}
-		String strippedDirectory = getDirectoryAbsolute(directory);
-		logger.debug("directory ls " + strippedDirectory);
-		if (this.isValueKey(strippedDirectory)) {
-			throw new DirectoryNotFoundException("Key is a value not a directory. Use read to get the value " + strippedDirectory);
-		}
-		if (!isListKey(strippedDirectory)) {
-			throw new DirectoryNotFoundException("Not a directory." + strippedDirectory);
-		}
-		if (directory.startsWith(this.delimiter)) {
-				List <String> myList = this.list.get(strippedDirectory);
-				List <String> resultList = new ArrayList <String>();
-				for (String key:myList) {
-					key=strippedDirectory + this.delimiter + key;
-					resultList.add(key);
-				}
-				return resultList;
-		}
-		return (this.list.get(strippedDirectory));
+		return ls(directory,true);
 	}
+	/**
+	 * Returns a List of keys defined by directory
+	 * @param directory
+	 * @return
+	 */
+	public List <String> ls(String directory,boolean absoluteFlag) throws DirectoryNotFoundException, DirectoryNotEmptyException {
+	if (directory==null) {
+		throw new DirectoryNotFoundException("directory is null");
+	}
+	String absoluteDirectory = getDirectoryAbsolute(directory);
+	logger.debug("directory ls " + absoluteDirectory);
+	if (this.isValueKey(absoluteDirectory)) {
+		throw new DirectoryNotFoundException("Key is a value not a directory. Use read to get the value " + absoluteDirectory);
+	}
+	if (!isListKey(absoluteDirectory)) {
+		throw new DirectoryNotFoundException("Not a directory." + absoluteDirectory);
+	}
+	if (!absoluteFlag) {
+		return (this.directoriesMap.get(absoluteDirectory));
+	}
+	if (directory.startsWith(this.delimiter)) {
+			List <String> myList = this.directoriesMap.get(absoluteDirectory);
+			List <String> resultList = new ArrayList <String>();
+			for (String key:myList) {
+				key=absoluteDirectory + this.delimiter + key;
+				resultList.add(key);
+			}
+			return resultList;
+	}
+	return (this.directoriesMap.get(absoluteDirectory));
+	
+}
 	@Deprecated
 	public List <String> getMapList(String pointer) {
-		try {return ls(this.getDirectoryCompatibility(pointer));} catch (Exception e) {logger.error(e);}
+		try {return ls(this.getDirectoryCompatibility(pointer),false);} catch (Exception e) {logger.error(e);}
+		return null;
+	}
+	
+	@Deprecated
+	public List <String> getMapListAbsolute(String pointer) {
+		try {return ls(this.getDirectoryCompatibility(pointer),true);} catch (Exception e) {logger.error(e);}
 		return null;
 	}
 	@Deprecated
 	public List <String> getMapList() {
-		try {return this.ls(this.pointer);} catch (Exception e) {logger.error(e);}
+		try {return this.ls(this.pointer,false);} catch (Exception e) {logger.error(e);}
 		return null;
 	}
 
@@ -554,7 +584,7 @@ public class JTreeMap <T> {
 		}
         HashMap <String,List<String>> bufferMap = new HashMap <String,List<String>>();
 		// remove sublists
-		for (String key:this.list.keySet())  {
+		for (String key:this.directoriesMap.keySet())  {
 			  if (key.startsWith(directory)) {
                   String parentDirectory = this.getParentDirectory(key);
                   if (isListKey(parentDirectory)) {
@@ -563,13 +593,13 @@ public class JTreeMap <T> {
                   }
 				  continue;
 			  }
-              bufferMap.put(key,this.list.get(key));
+              bufferMap.put(key,this.directoriesMap.get(key));
 		}
-        this.list=bufferMap;
+        this.directoriesMap=bufferMap;
 
 		// remove remove entries
         HashMap<String,T> bufferValue = new HashMap<String,T>();
-        for (String key:this.map.keySet())  {
+        for (String key:this.valuesMap.keySet())  {
 			if (key.startsWith(directory)) {
                 String parentDirectory = this.getParentDirectory(key);
                 if (isListKey(parentDirectory)) {
@@ -578,10 +608,10 @@ public class JTreeMap <T> {
                 }
                 continue;
             }
-            bufferValue.put(key,this.map.get(key));
+            bufferValue.put(key,this.valuesMap.get(key));
 		}
-        this.list=bufferMap;
-        this.map=bufferValue;
+        this.directoriesMap=bufferMap;
+        this.valuesMap=bufferValue;
 	 }
 
 	/**
@@ -626,13 +656,13 @@ public class JTreeMap <T> {
             throw new DirectoryNotFoundException("Parentdirectory " + parentDirectory + " not found for " + key);
         }
         String childKey = this.getChildKey(key);
-        this.map.remove(key);
-        this.list.put(parentDirectory, removeListEntry(parentDirectory, childKey));
+        this.valuesMap.remove(key);
+        this.directoriesMap.put(parentDirectory, removeListEntry(parentDirectory, childKey));
     }
 
     private List <String> removeListEntry(String parentDirectory,String childKey) {
         List <String> stripList = new ArrayList <String> ();
-        for (String entry:this.list.get(parentDirectory)) {
+        for (String entry:this.directoriesMap.get(parentDirectory)) {
             if (entry.equals(childKey)) {continue;}
             stripList.add(entry);
         }
@@ -643,8 +673,8 @@ public class JTreeMap <T> {
 	 * Reinit all values
 	 */
 	public void format()  {
-		map      = new HashMap <String,T> ();
-		list     = new HashMap <String,List<String>> ();
+		valuesMap      = new HashMap <String,T> ();
+		directoriesMap     = new HashMap <String,List<String>> ();
 	}
 	@Deprecated
 	public void clearAll() {
@@ -660,10 +690,10 @@ public class JTreeMap <T> {
 	/**
 	 * Gets the whole hash stored in JTreeMap. Useful for extension to get access. 
 	 * @param key defines the name where to get the list to access the JTreeMap values
-	 * @param map defines leaf keys and values
+	 * @param valuesMap defines leaf keys and values
 	 */
 	public HashMap <String,T> getMap () {
-		return this.map;
+		return this.valuesMap;
 	}
 
 
@@ -720,7 +750,7 @@ public class JTreeMap <T> {
 	 * @return
 	 */
 	public boolean isValueKey (String key) {
-		if (this.map.get(key)!=null) {
+		if (this.valuesMap.get(key)!=null) {
 			return true;
 		}
 		return false;
@@ -732,7 +762,7 @@ public class JTreeMap <T> {
 	 * @return
 	 */
 	public boolean isListKey (String key) {
-		if (this.list.get(key)!=null) {
+		if (this.directoriesMap.get(key)!=null) {
 			return true;
 		}
 		return false;
@@ -776,10 +806,12 @@ public class JTreeMap <T> {
 	 */
 
 	private String getDirectoryCompatibility(String directory)  {
+		logger.info("set compatibility " + this.pointer +  " --- "  + directory);
 		if (directory==null) {
 			return this.pointer;
 		}
 		if (directory.startsWith(this.delimiter)) {
+			logger.info("return absolute directory " + directory);
 			return directory;
 		}
 		if (directory.contains(this.delimiter)) {
